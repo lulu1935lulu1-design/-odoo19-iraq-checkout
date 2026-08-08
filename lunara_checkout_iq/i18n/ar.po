@@ -1,0 +1,45 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * lunara_checkout_iq
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: lunara_checkout_iq
+msgid "Iraq Checkout"
+msgstr "إتمام الطلب - العراق"
+
+#. module: lunara_checkout_iq
+msgid "Require email at checkout"
+msgstr "طلب البريد الإلكتروني عند إتمام الطلب"
+
+#. module: lunara_checkout_iq
+msgid "Require phone at checkout"
+msgstr "طلب رقم الهاتف عند إتمام الطلب"
+
+#. module: lunara_checkout_iq
+msgid "Off: customers can check out with name and phone only (email optional). On: email becomes mandatory."
+msgstr "عند الإيقاف يمكن للعميل إتمام الطلب بدون بريد إلكتروني. عند التفعيل يصبح البريد الإلكتروني إلزاميًا."
+
+#. module: lunara_checkout_iq
+msgid "Strongly recommended for Cash on Delivery so every order carries a contact number."
+msgstr "يوصى به بشدة للدفع عند الاستلام حتى يحتوي كل طلب على رقم تواصل."
+
+#. module: lunara_checkout_iq
+msgid "Off = guests can check out without an email address. On = email is mandatory."
+msgstr "إيقاف = يمكن للزائر إتمام الطلب بدون بريد إلكتروني. تفعيل = البريد الإلكتروني إلزامي."
+
+#. module: lunara_checkout_iq
+msgid "Recommended for phone-first and Cash on Delivery workflows. Iraqi numbers are normalized to +964."
+msgstr "مناسب للمتاجر التي تعتمد على الهاتف والدفع عند الاستلام. يتم توحيد الأرقام العراقية إلى صيغة +964."
+
+#. module: lunara_checkout_iq
+#, python-format
+msgid "“%s” is not a valid Iraqi phone number.\nEnter it as 07XX XXX XXXX or +964 7XX XXX XXXX."
+msgstr "«%s» ليس رقم هاتف عراقيًا صالحًا.\nأدخله بصيغة 07XX XXX XXXX أو +964 7XX XXX XXXX."
