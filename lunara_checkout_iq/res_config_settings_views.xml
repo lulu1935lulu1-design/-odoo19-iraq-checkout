@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_lunara_checkout" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.lunara.checkout</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='website']" position="inside">
+                <block title="Iraq Checkout" name="lunara_checkout_block">
+                    <setting string="Require email at checkout"
+                             help="Off = guests can check out without an email address. On = email is mandatory.">
+                        <field name="lunara_checkout_email_required"/>
+                    </setting>
+                    <setting string="Require phone at checkout"
+                             help="Recommended for phone-first and Cash on Delivery workflows. Iraqi numbers are normalized to +964.">
+                        <field name="lunara_checkout_phone_required"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
