@@ -1,0 +1,69 @@
+name: Public CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile Python sources
+        run: python -m compileall -q lunara_checkout_iq
+
+      - name: Parse XML files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          files = sorted(Path("lunara_checkout_iq").rglob("*.xml"))
+          if not files:
+              raise SystemExit("No XML files found")
+          for path in files:
+              ET.parse(path)
+              print(f"OK: {path}")
+          PY
+
+      - name: Validate expected module files
+        run: |
+          test -f lunara_checkout_iq/__manifest__.py
+          test -f lunara_checkout_iq/__init__.py
+          test -f lunara_checkout_iq/res_config_settings_views.xml
+          test -f lunara_checkout_iq/checkout_address_views.xml
+          test -f LICENSE
+          test -f README.md
+          test -f SECURITY.md
+
+      - name: Check for accidentally committed private material
+        shell: bash
+        run: |
+          set -euo pipefail
+          bad=0
+          for pattern in '*.pem' '*.p12' '*.pfx' '*.dump' '*.backup' '*.sql'; do
+            while IFS= read -r -d '' file; do
+              echo "Forbidden file type committed: $file"
+              bad=1
+            done < <(find . -type f -name "$pattern" -print0)
+          done
+          if [ "$bad" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Explain CI scope
+        run: |
+          echo "These checks validate public repository syntax/structure only."
+          echo "Odoo runtime tests require a legitimate Odoo 19 environment."
