@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Odoo runtime / local data
+*.log
+*.pid
+*.sqlite
+*.db
+filestore/
+sessions/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+secrets/
+
+# Database dumps / exports
+*.dump
+*.backup
+*.sql
+*.csv
+*.xlsx
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local AI/agent state
+.claude/settings.local.json
+.claude/*.tmp*
