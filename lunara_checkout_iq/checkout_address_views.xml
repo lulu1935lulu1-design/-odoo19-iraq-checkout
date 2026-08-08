@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="lunara_checkout_optional_email_required_phone"
+              inherit_id="website_sale.address_form_fields"
+              name="Iraq Checkout: Configurable Email / Phone">
+
+        <xpath expr="//input[@name='required_fields']" position="attributes">
+            <attribute name="t-att-value">website.lunara_checkout_required_fields</attribute>
+        </xpath>
+
+        <xpath expr="//label[@for='o_email']" position="attributes">
+            <attribute name="t-attf-class">col-form-label #{'label-required' if website.lunara_checkout_email_required else 'label-optional'}</attribute>
+        </xpath>
+
+        <xpath expr="//label[@for='o_phone']" position="attributes">
+            <attribute name="t-attf-class">col-form-label #{'label-required' if website.lunara_checkout_phone_required else 'label-optional'}</attribute>
+        </xpath>
+
+        <xpath expr="//input[@id='o_phone']" position="attributes">
+            <attribute name="placeholder">07XX XXX XXXX</attribute>
+            <attribute name="inputmode">tel</attribute>
+        </xpath>
+    </template>
+</odoo>
