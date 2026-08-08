@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible problem in Iraq Checkout for Odoo 19
+title: "[Bug]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Do not include credentials, customer data, database dumps, or private production logs.
+  - type: input
+    id: odoo_version
+    attributes:
+      label: Odoo version/build
+      placeholder: "19.0 ..."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reproducible sequence.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs or traceback
+      description: Remove all secrets and personal/customer information before posting.
