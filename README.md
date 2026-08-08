@@ -2,13 +2,16 @@
 
 [العربية](#العربية) · [English](#english)
 
-An open-source Odoo 19 add-on focused on practical e-commerce checkout requirements for Iraqi merchants.
+An open-source **Odoo 19.0 compatible** add-on focused on practical e-commerce checkout requirements for Iraqi merchants.
 
 The add-on makes checkout email/phone requirements configurable per website and normalizes common Iraqi phone formats to the international `+964` format, while preserving valid non-Iraqi international numbers.
 
 > **Technical module name:** `lunara_checkout_iq`  
-> **Target version:** Odoo 19.0  
-> **License:** LGPL-3.0-only
+> **Target / Compatibility:** Odoo **19.0**  
+> **License:** LGPL-3.0-only  
+> **Maintained by:** Lunara Iraq  
+> **Website:** https://lunara.com.iq  
+> **Contact:** info@lunara.com.iq
 
 ---
 
@@ -20,7 +23,7 @@ Iraqi e-commerce stores frequently rely on phone-first customer communication an
 
 ### Features
 
-- Odoo 19 Website/eCommerce checkout integration.
+- Compatible with **Odoo 19.0** Website/eCommerce checkout.
 - Configurable **required or optional email** per website.
 - Configurable **required or optional phone** per website.
 - Iraqi phone normalization to `+964`.
@@ -28,102 +31,53 @@ Iraqi e-commerce stores frequently rely on phone-first customer communication an
 - Preserves valid non-Iraqi international phone numbers instead of rewriting them as Iraqi numbers.
 - Checkout labels reflect whether email/phone are required or optional.
 - Multi-website friendly settings through Odoo Website configuration.
-- No payment credentials, customer exports, database dumps, or production secrets are required by this module.
-- No external API or background network call is required for the core functionality.
+- Arabic translation included.
+- No external payment API, credentials, or background network dependency is required by this module.
 
 ### Compatibility
 
-| Component | Status |
-|---|---|
-| Odoo | 19.0 |
-| `website_sale` | Required |
-| `phone_validation` | Required |
-| Odoo Community | Uses standard add-on APIs where dependencies are available |
-| Odoo Enterprise | Compatible as a custom add-on; **Enterprise source code is not distributed here** |
+This repository targets **Odoo 19.0** and the module manifest declares version `19.0.2.1.0`.
 
-Other Odoo versions have not been validated by this repository.
+Required Odoo modules:
+
+- `website_sale`
+- `phone_validation`
+
+The project does not redistribute Odoo Enterprise source code. Users are responsible for using a properly licensed Odoo installation where applicable.
 
 ### Installation
 
-1. Clone or download this repository.
-2. Copy the `lunara_checkout_iq` directory into one of your Odoo custom add-ons paths.
-3. Restart/reload Odoo according to your deployment process.
-4. Update the Apps list.
-5. Install **Iraq Checkout for Odoo 19** / the technical module `lunara_checkout_iq`.
-
-Example:
-
-```bash
-git clone https://github.com/lulu1935lulu1-design/-odoo19-iraq-checkout.git
-```
-
-Then add the repository/module directory to your Odoo add-ons path using the normal method for your deployment.
+1. Copy the `lunara_checkout_iq` directory into an Odoo custom add-ons path.
+2. Restart or reload Odoo according to your deployment process.
+3. Update the Apps list.
+4. Install **Lunara — Checkout: Optional Email & Mandatory Iraqi Phone**.
+5. Open Website settings and configure the checkout requirements.
 
 ### Configuration
 
-Open Odoo Website settings and configure:
+In Website settings, configure:
 
 - **Require email at checkout**
 - **Require phone at checkout**
 
-Typical Iraqi mobile input:
-
-```text
-0770 123 4567
-```
-
-is normalized to:
-
-```text
-+9647701234567
-```
-
-### Design principles
-
-This project intentionally stays small and reviewable:
-
-- use Odoo's existing website and partner models instead of creating a parallel checkout engine;
-- do not store credentials or secrets;
-- keep checkout policy configurable instead of hardcoding one merchant's workflow;
-- normalize phone data in one consistent format for downstream operations;
-- keep proprietary Odoo Enterprise source code outside this repository.
+Common Iraqi local numbers such as `07XX XXX XXXX` are normalized to `+964...` when saved.
 
 ### Security and privacy
 
-Never commit `.env` files, access tokens, private keys, database backups, customer exports, production logs, or other secrets. See [SECURITY.md](SECURITY.md).
+This public repository must never contain:
 
-### Testing
+- API keys, access tokens, passwords, private keys, or `.env` secrets;
+- customer names, phone numbers, addresses, orders, or exports;
+- production database dumps, logs, hostnames, or private infrastructure details;
+- Odoo Enterprise proprietary source code.
 
-The repository includes lightweight public CI checks that do not require proprietary Odoo source code, plus Odoo-side tests that can be run in a legitimate Odoo 19 environment.
+Please report security-sensitive issues privately by email to **info@lunara.com.iq** and see [SECURITY.md](SECURITY.md).
 
-A green public CI badge only proves the checks defined in this repository; it does **not** claim certification by Odoo or full production validation.
+### Maintainer
 
-### Contributing
-
-Issues and pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes.
-
-Useful contributions include:
-
-- tests for Iraqi phone formats;
-- Odoo 19 compatibility improvements;
-- Arabic translations and documentation;
-- checkout accessibility improvements;
-- reproducible bug reports;
-- support for additional Iraqi e-commerce conventions without merchant-specific hardcoding.
-
-### Roadmap
-
-See [ROADMAP.md](ROADMAP.md). The project prioritizes reliability, tests, documentation, and reusable Iraq-focused checkout behavior over merchant-specific features.
-
-### Scope and legal note
-
-This repository contains original/custom add-on code only. It does **not** include or grant rights to Odoo Enterprise source code, databases, customer data, payment credentials, or third-party proprietary software.
-
-Odoo is a trademark of Odoo S.A. This community project is not an official Odoo product and is not endorsed by Odoo S.A.
-
-### License
-
-LGPL-3.0-only. See [LICENSE](LICENSE).
+**Lunara Iraq**  
+Website: https://lunara.com.iq  
+Email: info@lunara.com.iq
 
 ---
 
@@ -131,64 +85,62 @@ LGPL-3.0-only. See [LICENSE](LICENSE).
 
 ### ما هو المشروع؟
 
-هذا موديول مفتوح المصدر لـ **Odoo 19** يركز على احتياجات الـCheckout للمتاجر الإلكترونية في العراق، خصوصًا المتاجر التي تعتمد على رقم الهاتف والتواصل المباشر والدفع عند الاستلام.
+هذا موديول مفتوح المصدر **متوافق مع Odoo 19.0** ومخصص لتحسين تجربة إتمام الطلب للمتاجر الإلكترونية في العراق.
 
-يتيح الموديول لمسؤول الموقع تحديد ما إذا كان البريد الإلكتروني أو رقم الهاتف **إلزاميًا أو اختياريًا** أثناء إتمام الطلب، ويقوم بتوحيد أرقام الهاتف العراقية إلى الصيغة الدولية `+964`.
+يسمح للمسؤول بتحديد ما إذا كان البريد الإلكتروني أو رقم الهاتف مطلوبًا أو اختياريًا أثناء Checkout، كما يقوم بتوحيد أرقام الهاتف العراقية إلى الصيغة الدولية `+964` مع الحفاظ على أرقام الدول الأخرى.
 
-### أهم المميزات
+### المزايا
 
-- متوافق مع Checkout في Odoo 19.
-- جعل البريد الإلكتروني مطلوبًا أو اختياريًا من إعدادات الموقع.
-- جعل رقم الهاتف مطلوبًا أو اختياريًا من إعدادات الموقع.
-- تحويل صيغ الأرقام العراقية الشائعة إلى `+964`.
-- قبول الإدخال المحلي مثل `07XX XXX XXXX`.
-- عدم تحويل الأرقام الدولية الصحيحة غير العراقية إلى رقم عراقي.
-- تحديث شكل الحقول ليعكس إذا كانت مطلوبة أو اختيارية.
-- دعم إعدادات مستقلة لكل Website.
-- لا يحتاج الموديول إلى مفاتيح دفع أو Tokens أو بيانات زبائن حتى يعمل.
-- الوظيفة الأساسية لا تحتاج اتصالًا بخدمة خارجية.
+- متوافق مع **Odoo 19.0** وWebsite/eCommerce.
+- جعل البريد الإلكتروني مطلوبًا أو اختياريًا حسب إعداد الموقع.
+- جعل رقم الهاتف مطلوبًا أو اختياريًا حسب إعداد الموقع.
+- تحويل أرقام العراق إلى صيغة `+964`.
+- دعم الصيغة المحلية الشائعة مثل `07XX XXX XXXX`.
+- عدم تحويل أرقام الدول الأخرى إلى أرقام عراقية.
+- تغيير علامات الحقول في Checkout بحسب كونها مطلوبة أو اختيارية.
+- مناسب للـMulti-Website.
+- يتضمن ترجمة عربية.
+- لا يحتاج هذا الموديول إلى مفاتيح API أو بيانات دفع أو اتصال بخدمة خارجية لكي يعمل.
 
-### المتطلبات
+### التوافق
 
-- Odoo 19.0
+المشروع يستهدف **Odoo 19.0**، وإصدار الموديول في الـmanifest هو `19.0.2.1.0`.
+
+الموديولات المطلوبة:
+
 - `website_sale`
 - `phone_validation`
 
+هذا المستودع لا ينشر كود Odoo Enterprise، ويجب استخدام Odoo وفق الترخيص المناسب.
+
 ### التثبيت
 
-1. نزّل أو استنسخ المستودع.
-2. ضع مجلد `lunara_checkout_iq` داخل مسار الـCustom Addons في Odoo.
-3. أعد تحميل/تشغيل Odoo حسب طريقة تشغيل سيرفرك.
-4. حدّث قائمة Apps.
-5. ثبّت الموديول `lunara_checkout_iq`.
-
-### الإعداد
-
-من إعدادات Website يمكنك التحكم في:
-
-- **Require email at checkout** — هل البريد الإلكتروني إلزامي؟
-- **Require phone at checkout** — هل رقم الهاتف إلزامي؟
-
-مثال:
-
-```text
-0770 123 4567
-```
-
-يصبح:
-
-```text
-+9647701234567
-```
+1. ضع مجلد `lunara_checkout_iq` داخل مسار Custom Addons في Odoo.
+2. أعد تشغيل أو تحميل خدمة Odoo حسب بيئتك.
+3. حدّث قائمة Apps.
+4. ثبّت موديول **Lunara — Checkout: Optional Email & Mandatory Iraqi Phone**.
+5. افتح إعدادات Website وحدد الحقول المطلوبة في Checkout.
 
 ### الأمان والخصوصية
 
-لا ترفع إلى GitHub ملفات `.env` أو كلمات المرور أو Tokens أو Private Keys أو نسخ قواعد البيانات أو بيانات الزبائن أو سجلات الإنتاج. راجع [SECURITY.md](SECURITY.md).
+يجب ألا يحتوي هذا المستودع العام على أي كلمات مرور أو Tokens أو API Keys أو مفاتيح خاصة أو بيانات زبائن أو Database Dumps أو معلومات البنية التحتية الخاصة أو كود Odoo Enterprise.
 
-### المساهمة
+للإبلاغ عن مشكلة أمنية بشكل خاص، راسل: **info@lunara.com.iq**.
 
-المساهمات مرحب بها، خصوصًا الاختبارات، تحسين توافق Odoo 19، التوثيق والترجمة العربية، وتحسين تجربة Checkout للسوق العراقي. راجع [CONTRIBUTING.md](CONTRIBUTING.md).
+### الجهة المشرفة
 
-### الترخيص
+**Lunara Iraq**  
+الموقع: https://lunara.com.iq  
+البريد الإلكتروني: info@lunara.com.iq
 
-المشروع منشور بترخيص **LGPL-3.0-only**. هذا المستودع لا يحتوي على كود Odoo Enterprise ولا يمنح أي حق في البرامج المملوكة لطرف ثالث.
+---
+
+## Contributing / المساهمة
+
+Issues and pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) first.
+
+نرحب بالمساهمات وطلبات الدمج. يرجى قراءة ملفات المساهمة والأمان قبل إرسال أي تغيير.
+
+## License
+
+LGPL-3.0-only. See [LICENSE](LICENSE).
