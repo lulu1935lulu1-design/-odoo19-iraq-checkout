@@ -1,0 +1,55 @@
+name: Security scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  obvious-secret-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Block sensitive tracked filenames
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-files | grep -E '(^|/)(\.env($|\.)|.*\.(pem|key|p12|pfx|jks|keystore)$|id_rsa$|id_ed25519$|database\.(dump|sql)$)' ; then
+            echo "Sensitive-looking file is tracked. Remove it before merging."
+            exit 1
+          fi
+
+      - name: Scan tracked text for obvious credential signatures
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=()
+          while IFS= read -r -d '' file; do
+            files+=("$file")
+          done < <(git ls-files -z)
+
+          if ((${#files[@]})); then
+            if grep -IEn \
+              -e 'BEGIN (RSA |OPENSSH |EC |DSA )?PRIVATE KEY' \
+              -e 'github_pat_[A-Za-z0-9_]{20,}' \
+              -e 'ghp_[A-Za-z0-9]{20,}' \
+              -e 'sk-ant-[A-Za-z0-9_-]{20,}' \
+              -e 'AKIA[0-9A-Z]{16}' \
+              "${files[@]}"; then
+              echo "Potential credential signature found in tracked content."
+              exit 1
+            fi
+          fi
+
+      - name: Confirm public-repository boundary
+        run: |
+          echo "No obvious sensitive filenames or credential signatures detected."
+          echo "This check is a guardrail and does not replace provider-side secret scanning."
