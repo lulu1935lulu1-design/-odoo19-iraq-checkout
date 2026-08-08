@@ -2,9 +2,14 @@
 {
     "name": "Iraq Checkout for Odoo 19",
     "version": "19.0.2.1.0",
-    "summary": "Configurable checkout email/phone requirements and Iraqi +964 phone normalization.",
+    "summary": "Odoo 19 compatible checkout controls and Iraqi +964 phone normalization.",
+    "description": (
+        "Open-source Odoo 19 checkout enhancements for Iraqi e-commerce. "
+        "Maintained by Lunara Iraq — https://lunara.com.iq — info@lunara.com.iq"
+    ),
     "author": "Lunara Iraq",
-    "website": "https://github.com/lulu1935lulu1-design/-odoo19-iraq-checkout",
+    "maintainer": "Lunara Iraq",
+    "website": "https://lunara.com.iq",
     "category": "Website/Website",
     "license": "LGPL-3",
     "depends": [
