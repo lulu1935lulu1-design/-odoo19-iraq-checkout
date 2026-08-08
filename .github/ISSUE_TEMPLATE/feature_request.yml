@@ -1,0 +1,34 @@
+name: Feature request
+description: Suggest a reusable Iraq-focused checkout improvement
+title: "[Feature]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please focus on reusable Odoo checkout behavior rather than one merchant's private configuration.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What real checkout problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the desired behavior and whether it should be configurable.
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Odoo 19 compatibility considerations
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-project safety
+      options:
+        - label: This request does not require publishing credentials, private customer data, or proprietary Odoo Enterprise source code.
+          required: true
