@@ -1,0 +1,10 @@
+SPDX-License-Identifier: LGPL-3.0-only
+
+This project is licensed under the GNU Lesser General Public License version 3.0 (LGPL-3.0-only).
+
+You may use, modify, and redistribute this software under the terms of that license.
+
+The complete license text is published by the Free Software Foundation at:
+https://www.gnu.org/licenses/lgpl-3.0.html
+
+This repository contains custom add-on code only and does not grant any rights to Odoo Enterprise source code or other third-party proprietary software.
